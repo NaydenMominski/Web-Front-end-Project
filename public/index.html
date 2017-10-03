@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web-App Assignment</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div id="root" class="container">
+        <header>
+            <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#/register" id="navAuth">Register or Login</a>
+                    </li>
+                    <li>
+                        <a href="#/materials">All files</a>
+                    </li>
+                    <li>
+                        <a href="#/materials/add">Add new file</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div id="content"></div>
+    </div>
+
+
+    <!--Libs-->
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/sammy/lib/sammy.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./node_modules/toastr/toastr.js"></script>
+
+    <!--Controllers-->
+    <script src="js/controllers/home-conteroller.js"></script>
+    <script src="js/controllers/users-controllers.js"></script>
+    <script src="js/controllers/materials-controller.js"></script>
+
+    <!--App-->
+    <script src="./js/firebase-init.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/templates.js"></script>
+    <!-- <script src="js/data.js"></script>
+    <script src="./js/auth.js"></script> -->
+
+</body>
+
+</html>
