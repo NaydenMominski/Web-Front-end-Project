@@ -1,1 +1,28 @@
-<h1>Materials Works</h1>
+
+<div class="wrapper">
+       <div>
+        <a class="category-path" href="#/home">Home</a>
+        <span class="raquo">»</span> materials
+    </div>
+    <h2 id="above">Protfolio</h2>
+
+<section id="content-wrapper">
+    <div id="heading">
+    </div>
+</section>
+<section >
+    <div class="container">
+        <div class="row">
+            {{#this}}
+            <div class="col-md-1-5">
+                <div class="portfolio-img-container" >
+                    <img  class="img-thumbnail" src={{img}} alt="">
+                    <a href={{img}} class="zoom-icon"> Zoom In</a>
+                    <a href="#/materials/{{key}}" class="more-icon">Read more</a>
+                    </div>
+                </div>
+            {{/this}} 
+           </div>
+    </div>
+</section>
+</div>

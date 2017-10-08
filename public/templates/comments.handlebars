@@ -1,0 +1,45 @@
+<hr>
+{{#if comments}}
+<p class="meta">Posted by {{userName}} on {{date}} in the Materials Page | {{comments.length}} Comments</p>
+{{else}}
+<p class="meta">Posted by {{userName}} on {{date}} in the Materials Page | 0 Comments</p>
+{{/if}}
+<div class="row">
+    <div class="col-md-4 clear">
+        <img class="img-thumbnail" src={{img}} alt="">
+    </div>
+    <div class="col-md-8">
+        <p id="description">{{description}}</p>
+    </div>
+</div>
+
+<div class="container-fluid comments no-padding-left">
+    <h3>{{comments.length}} Comments</h3>
+    <hr class="line-with-shadow">
+    <div class="container-fluid comment" id="comments-container">
+        {{#each comments}}
+        <div class="row comments-cont">
+            <div class="col-md-2 no-padding-left">
+                <div class="row">
+                    <img src={{avatar}} alt="">
+                </div>
+
+                <span class="date">{{date}}</span>
+
+            </div>
+            <div class="col-md-10  baloon">
+                <h4>{{userName}} says:</h4>
+                <div class="container-fluid crop-text">
+                    {{comment}}
+                </div>
+                <div class="container-fluid">
+                    <button class="btn btn-default btn-xs pull-right read-more read-more-btn">Read more</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="container-fluid">
+        <h3 class="comment" id="leave-a-comment">Leave a Comment</h3>
+    </div>
+</div>

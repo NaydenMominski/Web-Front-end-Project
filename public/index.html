@@ -3,42 +3,157 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Web-App Assignment</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="libs/toastr/build/toastr.css">
+    <link rel="stylesheet" href="./css/index2.css">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/5-col-grid.css">
 </head>
 
 <body>
-    <div id="root" class="container">
-        <header>
-            <nav class="navbar navbar-default">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#/home">Home</a>
-                    </li>
-                    <li>
-                        <a href="#/register" id="navAuth">Register or Login</a>
-                    </li>
-                    <li>
-                        <a href="#/materials">All files</a>
-                    </li>
-                    <li>
-                        <a href="#/materials/add">Add new file</a>
-                    </li>
-                </ul>
+    <div id="root">
+        <div class="container mynav">
+            <!-- <div class="row">
+            <div class="col-md-12"> -->
+            <a href="#">
+                <img src="img/logo.png" alt="Envisioned Theme" id="logo">
+            </a>
+            <nav id="menu-content" class="navbar navbar-expand-sm navbar-light ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul id="top-menu" class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#/home">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#/materials/add">Add </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#/materials">Materials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#/portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item" id="nav-singUp">
+                            <a class="nav-link" href="#/register">SingUp</a>
+                        </li>
+                        <li class="nav-item" id="nav-login">
+                            <a class="nav-link" href="#/login">Login</a>
+                        </li>
+                        <li class="nav-item" id="btn-logout">
+                            <a class="nav-link" href="#/logout">Logout</a>
+                        </li>
+                    </ul>
+                    <div id="social-icons" class="form-inline my-2 my-lg-0">
+                        <a href="#"><img alt="Twitter" src="http://cdn.elegantthemes.com/preview/Envisioned/wp-content/themes/Envisioned/images/twitter.png"></a>
+                        <a href="http://www.elegantthemes.com/preview/Envisioned/feed/"><img alt="Rss" src="http://cdn.elegantthemes.com/preview/Envisioned/wp-content/themes/Envisioned/images/rss.png"></a>
+                        <a href="#"><img alt="Facebook" src="http://cdn.elegantthemes.com/preview/Envisioned/wp-content/themes/Envisioned/images/facebook.png"></a>
+                    </div>
+                </div>
+                <!-- </div>
+    </div> -->
             </nav>
-        </header>
+        </div>
         <div id="content"></div>
     </div>
+    <footer>
+
+        <section class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>About Us</h2>
+                        <p>Maecenas ac nunc purus, et aliquam urna. Curabitur quis tellus vitae dolor tristique egestas. Fusce metus sem, accumsan vel auctor non, laoreet eget nulla. Donec lacinia elit ac nulla hendrerit at tincidunt justo facilisis. Praesent
+                            vel risus ut urna vestibulum fermentum. Pellentesque sollicitudin cursus blandit. In hac habitasse platea dictumst. Maecenas sed nulla sed lacus elementum dapibus. Praesent hendrerit semper tempor.
+                        </p>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Recent Comments</h2>
+                        <ul id="nested">
+                            <li> Rhoncus quis varius sed velit nibh moles </li>
+                            <li>Mauris quis nunc eu nunc molestie</li>
+                            <li>Egestas et sit amet odio morbi quis nunc </li>
+                            <li>Lacinia velit in nibh sodales sed quis nunc </li>
+                            <li>Pharetra sem feugiat nibh sodales sed </li>
+                            <li>Vivamus ut cursus augue nibh sodales sed </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Custom Text Widget</h2>
+                        <p class="last">Nam commodo dignissim felis vitae ullamcorper. Sed volutpat velit id purus bibendum placerat. Sed porta, nulla ac interdum ullamcorper, mi orci porta eros, nec commodo ligula dolor et arcu. Quisque ullamcorper enim vel tellus rhoncus
+                            et fermentum diam congue. Phasellus eu turpis lorem, id gravida nunc. In bibendum nulla vel quam pretium a fringilla erat ornare.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <section id="footer-bar">
+        <div class="container mynav">
+            <!-- <div class="row">
+                        <div class="col-md-12"> -->
+            <nav id="footer-nav" class="navbar navbar-expand-sm navbar-light ">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul id="top-menu" class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Disabled</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                            <p id="copyright">Designed by <a href="https://www.elegantthemes.com/" target="_blank">Elegant Themes</a> | Encoded by <a href="#" target="_blank">Nayden Mominski</a></p>
+                          </span>
+                </div>
+                <!-- </div>
+                </div> -->
+            </nav>
+        </div>
+    </section>
+    <!-- </div>
+    </div> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
+
 
 
     <!--Libs-->
     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    <script src="./node_modules/jquery/dist/jquery.js"></script>
-    <script src="./node_modules/sammy/lib/sammy.js"></script>
-    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
-    <script src="./node_modules/toastr/toastr.js"></script>
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script src="libs/sammy/lib/sammy.js"></script>
+    <script src="libs/handlebars/dist/handlebars.js"></script>
+    <script src="libs/toastr/toastr.js"></script>
 
     <!--Controllers-->
     <script src="js/controllers/home-conteroller.js"></script>

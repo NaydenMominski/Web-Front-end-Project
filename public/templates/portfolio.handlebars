@@ -1,0 +1,62 @@
+<section id="details" class="wrapper">
+
+    <div>
+        <a class="category-path" href="#/home">Home</a>
+        <span class="raquo">»</span> Portfolio
+    </div>
+    <h2 id="above">Protfolio</h2>
+
+    <div id="details-container" class="container clear">
+        <div class="row">
+            <div class="col-md-9 clear p-40">
+                {{#data}}
+                <div>
+                    <h3>{{title}}</h3>
+                    <hr> {{#if comments}}
+                    <p class="meta">Posted by {{userName}} on {{date}} in the Materials Page | {{comments.length}} Comments</p>
+                    {{else}}
+                    <p class="meta">Posted by {{userName}} on {{date}} in the Materials Page | 0 Comments</p>
+                    {{/if}}
+                    <div class="row">
+                        <div class="col-md-4 clear">
+                            <img class="img-thumbnail" src={{img}} alt="">
+                        </div>
+                        <div class="col-md-8 crop-box">
+                            <p id="description">{{description}}</p>
+                        </div>
+                        <div class="container-fluid">
+                            {{!-- <button class="btn read-more">Read more</button> --}}
+                            <a href="#/materials/{{key}}" class="read-more details-btn">   Read more</a>
+                        </div>
+                    </div>
+
+                </div>
+                {{/data}}
+
+            </div>
+            <div class="col-md-3 clear">
+                <h4>Recent Posts</h4>
+                <div class="widget">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ex cumque laborum voluptates fugit nisi aut, dicta aliquam consequatur in, natus expedita</p>
+                </div>
+                <h4>Recent Comments</h4>
+                <div class="widget no-margin">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ex cumque laborum voluptates fugit nisi aut, dicta aliquam consequatur in, natus expedita cum inventore corporis accusantium distinctio! Veniam, deserunt, reprehenderit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-9 " >
+                    <hr>
+                    <div  id="pagination" class="p-40">
+                    <h5>Page {{currentPage}} of {{pagesLen}}</h5>
+                    {{#pagination page pagesLen numberLinks}} {{#each pages}} {{#if isCurrent}}
+                    <a id="btn-page" class="active" href="#/portfolio?page={{page}}">{{display}}</a> {{/if}} {{#unless isCurrent}}
+                    <a id="btn-page" href="#/portfolio?page={{page}}">{{display}}</a> {{/unless}} {{/each}} {{/pagination}}
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,3 +1,20 @@
+/* .posts .current-post >.row:first-child {
+    height: 0;
+  }
+  .posts .current-post .post-title {
+    transform: translateY(-135px);
+  }
+  .posts .current-post .post-title a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .posts .current-post .text-left hr {
+    margin-top: -2.4em !important;
+  }
+  .posts .current-post .posted-by {
+    margin-top: 2em;
+  } */
+
 .no-padding-left {
     padding-left: 0;
 }
@@ -75,107 +92,20 @@
 
 
 /* .read-more {
-    border-radius: 1em;
-    background-color: #333333;
-    width: 7em;
+    border-radius: 1em !important;
+    background-color: #333333 !important;
+    width: 7em !important;
+    color: #fff !important;
+    padding: 0.2em !important;
+    height: 2.4em !important;
+    font-size: 0.85em !important;
+}
+
+.read-more a {
     color: #fff;
-    padding: 0.2em;
-    height: 2.4em;
-    font-size: 0.85em;
 } */
 
 
-/* .read-more a {
-    color: #fff;
-}
-
-.read-more a:hover {
+/* .read-more a:hover {
     text-decoration: none;
 } */
-
-#comment {
-    width: 95%;
-}
-
-.crop-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-textarea {
-    font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
-    color: #838383;
-}
-
-.crop-box {
-    height: 170px;
-    overflow: hidden;
-}
-
-#above {
-    color: #fff;
-    top: -80px;
-    position: relative;
-    font-family: 'Open Sans Condensed';
-}
-
-
-/* pagination */
-
-#pagination {
-    float: right;
-    position: relative;
-    bottom: 0;
-    font-family: 'Open Sans Condensed';
-}
-
-#pagination h5 {
-    float: left;
-    margin-right: 25px;
-    color: #838383;
-    margin-top: 13px;
-}
-
-#pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    background-color: white;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    font-family: 'colaborate-thinregular';
-    margin: 5px;
-}
-
-#pagination a.active {
-    background-color: #2B323B;
-    color: white;
-    border-radius: 8px;
-    font-family: 'colaborate-thinregular';
-}
-
-.p-40 {
-    padding-right: 40px;
-}
-
-.comment-submit {
-    margin-top: 12px;
-    border-radius: 1em;
-    background-color: #333333;
-    width: 7em;
-    color: #ffffff;
-    padding: 0.2em;
-    height: 2.4em;
-    font-size: 0.85em;
-    text-align: center;
-}
-
-.comment-submit:hover {
-    box-shadow: #B3B3B3 2px 2px 2px;
-    -webkit-box-shadow: #B3B3B3 2px 2px 2px;
-    -moz-box-shadow: #B3B3B3 2px 2px 2px;
-}

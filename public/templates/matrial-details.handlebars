@@ -1,1 +1,92 @@
-<h1>Works</h1>
+<section id="details" class="wrapper">
+
+    <div>
+        <a class="category-path" href="#/home">Home</a>
+        <span class="raquo">»</span><a class="category-path" href="#/portfolio">Portfolio</a>
+        <span class="raquo">»</span> Details 
+    </div>
+    <h2 id="above">{{title}}</h2>
+
+    <div id="details-container" class="container clear">
+        <div class="row">
+            <div class="col-sm-9 clear p-40">
+                <div id="comments-layer">
+                    <hr> 
+                    {{#if comments}}
+                    <p class="meta">Posted by {{userName}} on {{date}} in the Materials Page | {{comments.length}} Comments</p>
+                    {{else}}
+                    <p class="meta">Posted by {{userName}} on {{date}} in the Materials Page | 0 Comments</p>
+                    {{/if}}
+                    <div class="row">
+                        <div class="col-md-4 clear">
+                            <img class="img-thumbnail" src={{img}} alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <p id="description">{{description}}</p>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid comments no-padding-left">
+                        <h3>{{comments.length}} Comments</h3>
+                        <hr class="line-with-shadow">
+                        <div class="container-fluid comment clear" id="comments-container">
+                            {{#each comments}}
+                            <div class="row comments-cont ">
+                                <div class="col-md-2 no-padding-left">
+                                    <div class="row">
+                                        <img src={{avatar}} alt="">
+                                    </div>
+
+                                    <span class="date">{{date}}</span>
+
+                                </div>
+                                <div class="col-md-10  baloon">
+                                    <h4>{{userName}} says:</h4>
+                                    <div class="container-fluid crop-text">
+                                        {{comment}}
+                                    </div>
+                                    <div class="container-fluid">
+                                        <button class="btn btn-default btn-xs read-more read-more-btn">Read more</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="container-fluid">
+                            <h3 class="comment" id="leave-a-comment">Leave a Comment</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="comment-wrap">
+                    <div id="respond" class="comment-respond">
+                        <div id="commentform" class="comment-form">
+                            <p class="comment-form-comment">
+                                <label for="comment">Comment</label>
+                                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="true"></textarea>
+                            </p>
+                            <button class="btn comment-submit " id="comment-submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3 clear">
+                <h4>Recent Posts</h4>
+                <div class="widget">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ex cumque laborum voluptates fugit nisi aut, dicta aliquam consequatur in, natus expedita cum inventore corporis accusantium distinctio! Veniam, deserunt, reprehenderit.</p>
+                </div>
+                <h4>Recent Comments</h4>
+                <div class="widget">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ex cumque laborum voluptates fugit nisi aut, dicta aliquam consequatur in, natus expedita cum inventore corporis accusantium distinctio! Veniam, deserunt, reprehenderit.</p>
+                </div>
+                <h4>About Us</h4>
+                <div class="widget">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ex cumque laborum voluptates fugit nisi aut, dicta aliquam consequatur in, natus expedita cum inventore corporis accusantium distinctio! Veniam, deserunt, reprehenderit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
