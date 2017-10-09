@@ -1,4 +1,4 @@
-var materialsController = function() {
+let materialsController = (function() {
 
     function getAllMovies() {
         const promise = new Promise((resolve, reject) => {
@@ -7,7 +7,7 @@ var materialsController = function() {
 
             database.on('value', function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
-                    var childData = childSnapshot.val();
+                    let childData = childSnapshot.val();
                     childData.key = childSnapshot.key;
                     landmarks.push(childData);
                 });
@@ -18,6 +18,25 @@ var materialsController = function() {
         return promise;
     }
 
+    function updatePost(posts, postId) {
+        return firebase.database().ref('/posts/' + postId + '/comments').set(posts);
+    }
+
+    function writeNewPlace(todo, userId) {
+
+        let postData = todo;
+
+        // Get a key for a new Post.
+        let newPostKey = firebase.database().ref().child('posts').push().key;
+
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        let updates = {};
+        updates['/posts/' + newPostKey] = postData;
+        updates['/user-posts/' + userId + '/' + newPostKey] = postData;
+
+        return firebase.database().ref().update(updates);
+    }
+
     function getMovie(id) {
         return promise = new Promise((resolve, reject) => {
             const database = firebase.database().ref('/posts/');
@@ -25,7 +44,7 @@ var materialsController = function() {
 
             database.on('value', function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
-                    var childData = childSnapshot.val();
+                    let childData = childSnapshot.val();
                     childDataKey = childSnapshot.key;
 
                     if (childDataKey === id) {
@@ -60,7 +79,7 @@ var materialsController = function() {
     }
 
     function one(context) {
-        let landmarkId = this.params['id'];
+        let landmarkId = this.params.id;
 
         templates.get('matrial-details')
             .then(function(template) {
@@ -70,7 +89,7 @@ var materialsController = function() {
                         context.$element().html(template(landmarks));
 
                         $('.read-more-btn').click(function() {
-                            $(this).parent().prev().toggleClass("crop-text");
+                            $(this).parent().prev().toggleClass('crop-text');
                         });
 
                         $('#comment-submit').click(() => {
@@ -79,7 +98,7 @@ var materialsController = function() {
                             today = ((today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear());
 
 
-                            var comment = {
+                            let comment = {
                                 comment: $('#comment').val(),
                                 date: today,
                                 userName: getCurrentUserUserName(),
@@ -97,31 +116,18 @@ var materialsController = function() {
                             }
                             landmarks.comments = comments;
 
-                            var userId = firebase.auth().currentUser.uid;
+                            // let userId = firebase.auth().currentUser.uid;
 
-                            function updatePost(comment) {
-
-                                let postData = comment;
-
-                                // Get a key for a new Post.
-                                var newPostKey = firebase.database().ref().child('posts').push().key;
-                                let postId = landmarkId;
-                                // Write the new post's data simultaneously in the posts list and the user's post list.
-                                var updates = {};
-                                updates['/posts/' + postId + '/comments'] = postData;
-                                return firebase.database().ref('/posts/' + postId + '/comments').set(comments);
-                            }
-
-                            updatePost(comment)
+                            updatePost(comments, landmarkId)
                                 .then(() => {
                                     templates.get('comments')
-                                        .then(function(template) {
+                                        .then(function(t) {
                                             getMovie(landmarkId)
-                                                .then((landmarks) => {
-                                                    $("#comments-layer").html(template(landmarks));
+                                                .then((place) => {
+                                                    $('#comments-layer').html(t(place));
 
                                                     $('.read-more-btn').click(function() {
-                                                        $(this).parent().prev().toggleClass("crop-text");
+                                                        $(this).parent().prev().toggleClass('crop-text');
                                                     });
 
                                                 })
@@ -136,7 +142,7 @@ var materialsController = function() {
                         });
                     });
             });
-    };
+    }
 
     function add(context) {
         templates.get('material-add')
@@ -144,37 +150,20 @@ var materialsController = function() {
                 context.$element().html(template());
                 $('#btn-material-add').on('click', function() {
                     let today = new Date();
-                    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    let options = { year: 'numeric', month: 'long', day: 'numeric' };
                     today = today.toLocaleDateString('en-US', options);
-                    var todo = {
+                    let newPlace = {
 
                         title: $('#tb-material-text').val(),
                         description: $('#tb-material-des').val(),
                         img: $('#tb-material-link').val(),
                         date: today,
-                        userName: getCurrentUserUserName(),
+                        userName: getCurrentUserUserName()
                     };
-                    var userId = firebase.auth().currentUser.uid;
+                    let userId = firebase.auth().currentUser.uid;
 
-                    function writeNewPost(todo) {
-
-                        let postData = todo;
-
-                        // Get a key for a new Post.
-                        var newPostKey = firebase.database().ref().child('posts').push().key;
-
-                        // Write the new post's data simultaneously in the posts list and the user's post list.
-                        var updates = {};
-                        updates['/posts/' + newPostKey] = postData;
-                        updates['/user-posts/' + userId + '/' + newPostKey] = postData;
-
-                        return firebase.database().ref().update(updates);
-                    }
-
-                    console.log(todo);
-                    writeNewPost(todo)
-                        .then(function(todo) {
-
+                    writeNewPlace(newPlace, userId)
+                        .then(() => {
                             toastr.success('Added!');
                             context.redirect('#/materials');
                         })
@@ -185,17 +174,17 @@ var materialsController = function() {
 
 
     function portfolio(context) {
-        size = 2,
-            page = +this.params.page || 0,
+        const size = 2,
+            page = +this.params.page || 0;
 
-            templates.get('portfolio')
+        templates.get('portfolio')
             .then(function(template) {
                 getAllMovies()
                     .then((data) => {
 
                         // pagination 
 
-                        var pagesLen = Math.ceil(data.length / size),
+                        let pagesLen = Math.ceil(data.length / size),
                             pages = [],
                             currentPage = page + 1;
 
@@ -208,7 +197,7 @@ var materialsController = function() {
 
                         data = data.slice(page * size, (page + 1) * size);
 
-                        var numberLinks = 5;
+                        let numberLinks = 5;
                         Handlebars.registerHelper('pagination', function(currentPage, totalPage, size, options) {
                             var startPage, endPage, context, totalPage = totalPage - 1;
 
@@ -238,7 +227,7 @@ var materialsController = function() {
                             context = {
                                 startFromFirstPage: false,
                                 pages: [],
-                                endAtLastPage: false,
+                                endAtLastPage: false
                             };
                             if (startPage === 0) {
                                 context.startFromFirstPage = true;
@@ -275,4 +264,4 @@ var materialsController = function() {
         portfolio: portfolio
 
     };
-}();
+}());

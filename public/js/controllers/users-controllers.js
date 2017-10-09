@@ -1,4 +1,4 @@
-var usersController = function() {
+var usersController = (function() {
 
 
     //Get Elements
@@ -36,14 +36,14 @@ var usersController = function() {
                                 photoURL: avatar
                             });
                         })
-                        .catch(e => toastr.error(e.message));
+                        .catch((error) => toastr.error(error.message));
 
                     window.location = window.location.origin + '#/home';
                 });
 
                 // })
             });
-    };
+    }
 
     function login(context) {
         templates.get('login')
@@ -63,13 +63,13 @@ var usersController = function() {
                     const auth = firebase.auth();
                     //Sign In
                     const promise = auth.signInWithEmailAndPassword(email, pass);
-                    promise.catch(e => toastr.error(e.message));
+                    promise.catch((error) => toastr.error(error.message));
                     window.location = window.location.origin + '#/home';
                 });
             });
-    };
+    }
     return {
         register: authentication,
         login: login
     };
-}();
+}());

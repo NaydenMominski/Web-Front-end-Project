@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 System.config({
     transpiler: 'plugin-babel',
     map: {
@@ -16,7 +16,7 @@ System.config({
         'jquery': 'node_modules/jquery/dist/jquery.js',
         'handlebars': 'node_modules/handlebars/dist/handlebars.min.js',
         'sammy': '/node_modules/sammy/lib/sammy.js',
-        'toastr': "node_modules/toastr/toastr.js",
+        'toastr': 'node_modules/toastr/toastr.js'
     }
 });
 

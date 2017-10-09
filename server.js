@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const express = require('express');
 
 let port = process.env.PORT || 3000;
