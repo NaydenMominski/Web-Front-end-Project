@@ -215,7 +215,7 @@ ul#top-menu a:hover {
 
 #features {
     background: url('../images/content-box.png');
-    height: 925px;
+    height: 75%;
     width: 100%;
 }
 
@@ -240,12 +240,16 @@ ul#top-menu a:hover {
 #features-list p {
     text-align: left;
     line-height: 21px;
-    width: 239px;
     height: 149px;
     overflow: hidden;
 }
 
-#f-1,
+.center-col {
+    padding: 0 7px;
+}
+
+
+/* #f-1,
 #f-2,
 #f-3 {
     display: block;
@@ -254,15 +258,16 @@ ul#top-menu a:hover {
     width: 38px;
     height: 38px;
     margin-bottom: 20px;
-}
+} */
 
-.f-1 {
+
+/* .f-1 {
     float: right;
 }
 
 .f-1>form {
     display: block;
-}
+} */
 
 .last {
     margin-right: 0 !important;
@@ -286,7 +291,7 @@ ul#top-menu a:hover {
     text-align: center;
 }
 
-.f-1 .read-more {
+#features-list .read-more {
     background-color: #ffffff;
     color: #333333;
     border: 1px solid #cccccc;
