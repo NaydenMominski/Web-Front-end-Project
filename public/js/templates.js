@@ -1,4 +1,4 @@
-var templates = function() {
+var templates = (function() {
     var handlebars = window.handlebars || window.Handlebars,
         Handlebars = window.handlebars || window.Handlebars,
         cache = {};
@@ -22,4 +22,4 @@ var templates = function() {
     return {
         get: get
     };
-}();
+}());

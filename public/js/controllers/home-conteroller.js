@@ -1,4 +1,4 @@
-var homeController = function() {
+var homeController = (function() {
     function getTenMovies() {
         const promise = new Promise((resolve, reject) => {
             const database = firebase.database().ref('/posts/');
@@ -31,4 +31,4 @@ var homeController = function() {
     return {
         all: all
     };
-}();
+}());

@@ -1,20 +1,22 @@
 (function() {
     const sammyApp = Sammy('#content', function() {
-        firebase.auth().onAuthStateChanged((firebaseUser) => {
+        firebase.auth().onAuthStateChanged(firebaseUser => {
             if (firebaseUser) {
                 console.log(firebaseUser);
                 toastr.success('You Are Loged In');
                 $('#btn-logout').show();
                 $('#nav-login').hide();
                 $('#nav-singUp').hide();
+
             } else {
                 $('#btn-logout').hide();
                 $('#nav-login').show();
                 $('#nav-singUp').show();
+
             }
         });
 
-        document.getElementById('btn-logout').addEventListener('click', (e) => {
+        document.getElementById('btn-logout').addEventListener('click', e => {
             e.preventDefault();
             firebase.auth().signOut();
             toastr.warning('You are loged out');

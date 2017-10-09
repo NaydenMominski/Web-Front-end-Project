@@ -392,7 +392,7 @@ ul#top-menu a:hover {
 }
 
 a.more-icon {
-    background: url('../img/more-icon.png') no-repeat;
+    background: url('../images/more-icon.png') no-repeat;
     /* display: block;
     height: 37px;
     left: 39px;
@@ -415,7 +415,7 @@ a.more-icon {
 }
 
 a.zoom-icon {
-    background: url('../img/zoom-icon.png') no-repeat;
+    background: url('../images/zoom-icon.png') no-repeat;
     display: block;
     margin: 0;
     position: absolute;

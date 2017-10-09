@@ -15,13 +15,9 @@ let redirectToHomePage = function(req, res) {
 };
 
 let app = express();
-
 app.use(express.static('public'));
 app.use('/libs', express.static('node_modules'));
 
 app.get('', redirectToHomePage);
-// app.get('/', redirectToHomePage);
-// app.get('/#/', redirectToHomePage);
-// app.get('/#/home', redirectToHomePage);
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));

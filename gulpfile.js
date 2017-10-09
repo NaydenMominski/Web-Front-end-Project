@@ -1,54 +1,57 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     babel = require('gulp-babel'),
     gulpsync = require('gulp-sync')(gulp),
     clean = require('gulp-clean'),
-    csslint = require('gulp-csslint');
+    nodemon = require('gulp-nodemon');
 
+
+gulp.task('run', () => {
+    return nodemon({
+        ext: 'js html',
+        script: 'server.js'
+    });
+});
 //Clean
 gulp.task('clean', () => {
-    return gulp.src('result', { read: false })
+    return gulp.src('build', { read: false })
         .pipe(clean({ force: true }));
 });
 //  Copy
 gulp.task('copy:html', () => {
-    return gulp.src('./**/*.html')
-        .pipe(gulp.dest('result'));
+    return gulp.src(['./**/*.html', '!node_modules/**'])
+        .pipe(gulp.dest('build'));
 });
 gulp.task('copy:templates', () => {
     return gulp.src('public/**/*.handlebars')
-        .pipe(gulp.dest('result/templates'));
+        .pipe(gulp.dest('build/public'));
 });
 gulp.task('copy', gulpsync.sync(['copy:html', 'copy:templates']));
 
 //Lint
 gulp.task('lint:js', () => {
-    return gulp.src(['/public/js/**/*.js', '!node_modules/**'])
+    return gulp.src(['public/js/**/*.js', '!node_modules/**'])
         .pipe(eslint({ configFile: '.eslintrc' }))
         // .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
-gulp.task('lint:css', function() {
-    gulp.src('public/css/*.css')
-        .pipe(csslint())
-        .pipe(csslint.formatter());
-});
+
 gulp.task('lint', ['lint:js']);
 
 //  Compile
 gulp.task('compile:js', () => {
-    return gulp.src('public/js/**/*.js')
+    return gulp.src(['./**/*.js', '!node_modules/**'])
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(gulp.dest('result/js'));
+        .pipe(gulp.dest('build'));
 });
 gulp.task('compile', gulpsync.sync(['compile:js']));
 
 //Minify
 var cssmin = require('gulp-cssmin');
-var rename = require('gulp-rename');
+// var rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin'),
     uglify = require('gulp-uglify'),
     pump = require('pump');
@@ -56,19 +59,26 @@ const imagemin = require('gulp-imagemin'),
 gulp.task('mincss', function() {
     gulp.src('public/css/*.css')
         .pipe(cssmin())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('result/css'));
+        // .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('build/public/css'));
 });
 gulp.task('imagemin', () =>
-    gulp.src('/public/images/*')
+    gulp.src('public/images/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('result/images'))
+    .pipe(gulp.dest('build/public/images'))
 );
+
+// gulp.task('imagemin', () => {
+//     return gulp.src('public/images/*')
+//         // .pipe(newer('build/public/images'))
+//         .pipe(imagemin({ optimizationLevel: 5 }))
+//         .pipe(gulp.dest('build/public/images'));
+// });
 gulp.task('compress:js', function(cb) {
     pump([
-            gulp.src('result/js/**/*.js'),
+            gulp.src('build/**/*.js'),
             uglify(),
-            gulp.dest('result/js')
+            gulp.dest('build')
         ],
         cb
     );
