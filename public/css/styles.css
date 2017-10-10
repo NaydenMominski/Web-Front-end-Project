@@ -551,3 +551,21 @@ textarea {
 .p-40 {
     padding-right: 40px;
 }
+
+.comment-submit {
+    margin-top: 12px;
+    border-radius: 1em;
+    background-color: #333333;
+    width: 7em;
+    color: #ffffff;
+    padding: 0.2em;
+    height: 2.4em;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+.comment-submit:hover {
+    box-shadow: #B3B3B3 2px 2px 2px;
+    -webkit-box-shadow: #B3B3B3 2px 2px 2px;
+    -moz-box-shadow: #B3B3B3 2px 2px 2px;
+}
