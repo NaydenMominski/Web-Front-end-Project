@@ -7,11 +7,14 @@
                 $('#btn-logout').show();
                 $('#nav-login').hide();
                 $('#nav-singUp').hide();
+                $('#nav-materials').show();
+
 
             } else {
                 $('#btn-logout').hide();
                 $('#nav-login').show();
                 $('#nav-singUp').show();
+                $('#nav-materials').hide();
 
             }
         });

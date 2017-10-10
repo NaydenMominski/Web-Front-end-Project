@@ -90,22 +90,20 @@
     z-index: 0;
 }
 
-
-/* .read-more {
-    border-radius: 1em !important;
-    background-color: #333333 !important;
-    width: 7em !important;
-    color: #fff !important;
-    padding: 0.2em !important;
-    height: 2.4em !important;
-    font-size: 0.85em !important;
+.comment-submit {
+    margin-top: 12px;
+    border-radius: 1em;
+    background-color: #333333;
+    width: 7em;
+    color: #ffffff;
+    padding: 0.2em;
+    height: 2.4em;
+    font-size: 0.85em;
+    text-align: center;
 }
 
-.read-more a {
-    color: #fff;
-} */
-
-
-/* .read-more a:hover {
-    text-decoration: none;
-} */
+.comment-submit:hover {
+    box-shadow: #B3B3B3 2px 2px 2px;
+    -webkit-box-shadow: #B3B3B3 2px 2px 2px;
+    -moz-box-shadow: #B3B3B3 2px 2px 2px;
+}
