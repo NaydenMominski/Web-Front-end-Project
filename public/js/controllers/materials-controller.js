@@ -1,76 +1,10 @@
 let materialsController = (function() {
 
-    function getAllMovies() {
-        const promise = new Promise((resolve, reject) => {
-            const database = firebase.database().ref('/posts/');
-            let landmarks = [];
-
-            database.on('value', function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    let childData = childSnapshot.val();
-                    childData.key = childSnapshot.key;
-                    landmarks.push(childData);
-                });
-                resolve(landmarks);
-            });
-        });
-
-        return promise;
-    }
-
-    function updatePost(posts, postId) {
-        return firebase.database().ref('/posts/' + postId + '/comments').set(posts);
-    }
-
-    function writeNewPlace(todo, userId) {
-
-        let postData = todo;
-
-        // Get a key for a new Post.
-        let newPostKey = firebase.database().ref().child('posts').push().key;
-
-        // Write the new post's data simultaneously in the posts list and the user's post list.
-        let updates = {};
-        updates['/posts/' + newPostKey] = postData;
-        updates['/user-posts/' + userId + '/' + newPostKey] = postData;
-
-        return firebase.database().ref().update(updates);
-    }
-
-    function getMovie(id) {
-        return promise = new Promise((resolve, reject) => {
-            const database = firebase.database().ref('/posts/');
-            let landmark;
-
-            database.on('value', function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    let childData = childSnapshot.val();
-                    childDataKey = childSnapshot.key;
-
-                    if (childDataKey === id) {
-                        landmark = childData;
-                    }
-
-                });
-                resolve(landmark);
-            });
-        });
-    }
-
-    function getCurrentUserUserName() {
-        return firebase.auth().currentUser.displayName;
-    }
-
-    function getCurrentUserAvatar() {
-        return firebase.auth().currentUser.photoURL;
-
-    }
-
     function all(context) {
 
         templates.get('materials')
             .then(function(template) {
-                getAllMovies()
+                data.getAllMovies()
                     .then((landmarks) => {
                         console.log(landmarks);
                         context.$element().html(template(landmarks));
@@ -83,7 +17,7 @@ let materialsController = (function() {
 
         templates.get('matrial-details')
             .then(function(template) {
-                getMovie(landmarkId)
+                data.getMovie(landmarkId)
                     .then((landmarks) => {
 
                         context.$element().html(template(landmarks));
@@ -97,48 +31,46 @@ let materialsController = (function() {
 
                             today = ((today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear());
 
-
+                            console.log(today);
                             let comment = {
                                 comment: $('#comment').val(),
                                 date: today,
-                                userName: getCurrentUserUserName(),
-                                avatar: getCurrentUserAvatar()
+                                userName: data.getCurrentUserUserName(),
+                                avatar: data.getCurrentUserAvatar() || '../../images/default-avatar.png'
                             };
-                            console.log(comment);
+                            // console.log(comment);
+                            if (comment.comment) {
+                                let comments = [];
 
-                            let comments = [];
+                                if (landmarks.comments) {
+                                    comments = landmarks.comments;
+                                    comments.push(comment);
+                                } else {
+                                    comments.push(comment);
+                                }
+                                landmarks.comments = comments;
+                                data.updatePost(comments, landmarkId)
+                                    .then(() => {
+                                        templates.get('comments')
+                                            .then(function(t) {
+                                                data.getMovie(landmarkId)
+                                                    .then((place) => {
+                                                        $('#comments-layer').html(t(place));
 
-                            if (landmarks.comments) {
-                                comments = landmarks.comments;
-                                comments.push(comment);
-                            } else {
-                                comments.push(comment);
-                            }
-                            landmarks.comments = comments;
+                                                        $('.read-more-btn').click(function() {
+                                                            $(this).parent().prev().toggleClass('crop-text');
+                                                        });
 
-                            // let userId = firebase.auth().currentUser.uid;
-
-                            updatePost(comments, landmarkId)
-                                .then(() => {
-                                    templates.get('comments')
-                                        .then(function(t) {
-                                            getMovie(landmarkId)
-                                                .then((place) => {
-                                                    $('#comments-layer').html(t(place));
-
-                                                    $('.read-more-btn').click(function() {
-                                                        $(this).parent().prev().toggleClass('crop-text');
+                                                    })
+                                                    .then(() => {
+                                                        toastr.success('comment Added!');
+                                                        $('#comment').val('');
                                                     });
 
-                                                })
-                                                .then(() => {
-                                                    toastr.success('comment Added!');
-                                                    $('#comment').val('');
-                                                });
-
-                                        })
-                                        .catch((error) => console.log(error));
-                                });
+                                            })
+                                            .catch((error) => console.log(error));
+                                    });
+                            }
                         });
                     });
             });
@@ -156,13 +88,12 @@ let materialsController = (function() {
 
                         title: $('#tb-material-text').val(),
                         description: $('#tb-material-des').val(),
-                        img: $('#tb-material-link').val(),
+                        img: $('#tb-material-link').val() || '../../images/no-image-available.jpg',
                         date: today,
-                        userName: getCurrentUserUserName()
+                        userName: data.getCurrentUserUserName()
                     };
                     let userId = firebase.auth().currentUser.uid;
-
-                    writeNewPlace(newPlace, userId)
+                    data.writeNewPlace(newPlace, userId)
                         .then(() => {
                             toastr.success('Added!');
                             context.redirect('#/materials');
@@ -179,7 +110,7 @@ let materialsController = (function() {
 
         templates.get('portfolio')
             .then(function(template) {
-                getAllMovies()
+                data.getAllMovies()
                     .then((data) => {
 
                         // pagination 
@@ -199,7 +130,7 @@ let materialsController = (function() {
 
                         let numberLinks = 5;
                         Handlebars.registerHelper('pagination', function(currentPage, totalPage, size, options) {
-                            var startPage, endPage, context, totalPage = totalPage - 1;
+                            var startPage, endPage, context, totalPage;
 
                             if (arguments.length === 3) {
                                 options = size;

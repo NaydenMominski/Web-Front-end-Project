@@ -11,6 +11,6 @@
     firebase.initializeApp(config);
 
     //test firebase
-    const dbRefObject = firebase.database().ref().child('obj');
+    const dbRefObject = firebase.database().ref().child('posts');
     dbRefObject.on('value', snap => console.log(snap.val()));
 }());
