@@ -1,5 +1,6 @@
 # Web-Front-end-Project
 The final Telerik Academy course project
+- [DEMO](https://bulgarian-beautiful-places.herokuapp.com/#/home)
 
 ##  General Requirements
 Please define and implement the following assets in your project:
