@@ -4,7 +4,7 @@ let materialsController = (function() {
 
         templates.get('materials')
             .then(function(template) {
-                data.getAllMovies()
+                data.getAllPlaces()
                     .then((landmarks) => {
                         console.log(landmarks);
                         context.$element().html(template(landmarks));
@@ -17,7 +17,7 @@ let materialsController = (function() {
 
         templates.get('matrial-details')
             .then(function(template) {
-                data.getMovie(landmarkId)
+                data.getPlace(landmarkId)
                     .then((landmarks) => {
 
                         context.$element().html(template(landmarks));
@@ -53,7 +53,7 @@ let materialsController = (function() {
                                     .then(() => {
                                         templates.get('comments')
                                             .then(function(t) {
-                                                data.getMovie(landmarkId)
+                                                data.getPlace(landmarkId)
                                                     .then((place) => {
                                                         $('#comments-layer').html(t(place));
 
@@ -110,7 +110,7 @@ let materialsController = (function() {
 
         templates.get('portfolio')
             .then(function(template) {
-                data.getAllMovies()
+                data.getAllPlaces()
                     .then((data) => {
 
                         // pagination 

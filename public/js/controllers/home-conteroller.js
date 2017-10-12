@@ -1,5 +1,5 @@
 var homeController = (function() {
-    function getTenMovies() {
+    function getTenPlaces() {
         const promise = new Promise((resolve, reject) => {
             const database = firebase.database().ref('/posts/');
             let landmarks = [];
@@ -21,10 +21,13 @@ var homeController = (function() {
 
         templates.get('home')
             .then(function(template) {
-                getTenMovies()
+                getTenPlaces()
                     .then((landmarks) => {
+                        var sliders = landmarks.slice(0, 7);
+                        console.log(sliders);
                         console.log(landmarks);
-                        context.$element().html(template(landmarks));
+                        context.$element().html(template({ landmarks, sliders }));
+                        data.slides();
                     });
             });
     }

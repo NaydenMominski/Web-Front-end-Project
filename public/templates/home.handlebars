@@ -1,3 +1,23 @@
+
+        <section id="slide-container">
+            <div id="slide-main">
+              {{#sliders}}
+                <div class="slide-frame frame-{{@index}}">
+                    <span class="zoomed-image" style="background-image:url({{{img}}})" link="{{{img}}}" name="{{title}}">&nbsp;</span>
+                    <div class="slide-bottom">
+                        <h2>{{title}}</h2>
+                    </div>
+                    <div class="slide-icons">
+                        <a class="slide-left-arrow">Left</a>
+                        <a class="slide-zoom">Zoom in</a>
+                        <a href="#/posts/read/{{key}}" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
+                    </div>
+                </div>
+            {{/sliders}}
+            </div>
+        </section>
+
 <div id="features">
     <section class="wrapper">
         <div class="container" id="features-list">
@@ -74,14 +94,14 @@
 
     <section id="home-gallery">
         <div class="wrapper">
-            {{#this}}
+            {{#landmarks}}
             <div class="img-container">
                 <img src={{img}} class="img-thumbnail project-image" alt="Make A Wish">
                 <a href={{img}} class="zoom-icon fancybox" rel="media" title="Make A Wish">
                             Zoom In							</a>
                 <a href="#/materials/{{key}}" class="more-icon">Read more</a>
             </div>
-            {{/this}}
+            {{/landmarks}}
             <!-- end .img-container -->
         </div>
         <!-- end .container -->
