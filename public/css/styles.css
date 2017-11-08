@@ -49,6 +49,7 @@ body {
     margin: 0 auto;
     width: 75%;
     position: relative;
+    /* padding: 0px; */
 }
 
 .mycontent {
@@ -252,6 +253,7 @@ a.zoom-icon {
 
 #home-gallery {
     margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 
@@ -338,6 +340,7 @@ footer p {
 
 .category-path {
     color: #a3a3a3;
+    padding-left: 15px;
 }
 
 .category-path:hover {
@@ -783,4 +786,8 @@ textarea {
 #nav-intermediate-space {
     background: #11161c;
     padding: 35px;
+}
+
+.wrapper h2 {
+    padding-left: 15px;
 }

@@ -9,8 +9,8 @@
                     </div>
                     <div class="slide-icons">
                         <a class="slide-left-arrow">Left</a>
-                        <a class="slide-zoom">Zoom in</a>
-                        <a href="#/posts/read/{{key}}" class="slide-link">Open link</a>
+                        <a href={{img}}  class="slide-zoom">Zoom in</a>
+                        <a href="#/materials/{{key}}" class="slide-link">Open link</a>
                         <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
 
 <div id="features">
     <section class="wrapper">
-        <div class="container" id="features-list">
+        <div class="container-fluid" id="features-list">
             <div class="row">
                 <div class="col-md-4 pl-0">
                     <div class="row">
@@ -81,7 +81,7 @@
     </section>
     <section id="info">
         <div class="wrapper">
-            <div class="container">
+            <div class="container-fluid clear">
                 <img src="images/quote.png" alt="quote-icon" id="quote">
                 <p>Vivamus id feugiat ligula. Nulla facilisi. Integer lacus justo, elementum eget consequat a, molestie nec sapien. Quisque tincidunt, nunc vitae adipiscing</p>
             </div>
@@ -94,7 +94,7 @@
 
     <section id="home-gallery">
         <div class="wrapper">
-            {{#landmarks}}
+            {{!-- {{#landmarks}}
             <div class="img-container">
                 <img src={{img}} class="img-thumbnail project-image" alt="Make A Wish">
                 <a href={{img}} class="zoom-icon fancybox" rel="media" title="Make A Wish">
@@ -102,9 +102,25 @@
                 <a href="#/materials/{{key}}" class="more-icon">Read more</a>
             </div>
             {{/landmarks}}
-            <!-- end .img-container -->
-        </div>
-        <!-- end .container -->
+    
+        </div> --}}
+
+
+
+            <div class="container-fluid clear" >
+        <div class="row">
+            {{#landmarks}}
+            <div class="col-md-1-5">
+                <div class="portfolio-img-container" >
+                    <img  class="img-thumbnail img-fluid" src={{img}} alt="">
+                    <a href={{img}} class="zoom-icon"> Zoom In</a>
+                    <a href="#/materials/{{key}}" class="more-icon">Read more</a>
+                    </div>
+                </div>
+            {{/landmarks}} 
+           </div>
+    </div>
+  
     </section>
 
     <!--End recent work-->

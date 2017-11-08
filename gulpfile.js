@@ -18,8 +18,12 @@ gulp.task('clean', () => {
         .pipe(clean({ force: true }));
 });
 //  Copy
+// gulp.task('copy:all', () => {
+//     return gulp.src(['./*.*', '!node_modules/**'])
+//         .pipe(gulp.dest('build'));
+// });
 gulp.task('copy:html', () => {
-    return gulp.src(['./**/*.html', '!node_modules/**'])
+    return gulp.src(['./**/*.html', '!node_modules/**', '!bulgarian-beautiful-places/**'])
         .pipe(gulp.dest('build'));
 });
 gulp.task('copy:templates', () => {
@@ -30,7 +34,7 @@ gulp.task('copy', gulpsync.sync(['copy:html', 'copy:templates']));
 
 //Lint
 gulp.task('lint:js', () => {
-    return gulp.src(['public/js/**/*.js', '!node_modules/**'])
+    return gulp.src(['public/js/**/*.js', '!node_modules/**', '!bulgarian-beautiful-places/**'])
         .pipe(eslint({ configFile: '.eslintrc' }))
         // .pipe(eslint())
         .pipe(eslint.format())
@@ -41,7 +45,7 @@ gulp.task('lint', ['lint:js']);
 
 //  Compile
 gulp.task('compile:js', () => {
-    return gulp.src(['./**/*.js', '!node_modules/**'])
+    return gulp.src(['./**/*.js', '!node_modules/**', '!bulgarian-beautiful-places/**'])
         .pipe(babel({
             presets: ['es2015']
         }))
