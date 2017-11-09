@@ -58,6 +58,10 @@
         width: 80%;
         float: left;
     }
+    .col-sm-1-5 img {
+        width: calc(100vw);
+        height: calc((100vw) * 0.45/5);
+    }
 }
 
 @media (min-width: 992px) {
